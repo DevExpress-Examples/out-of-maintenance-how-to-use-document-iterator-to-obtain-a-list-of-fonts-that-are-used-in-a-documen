@@ -50,7 +50,7 @@ Namespace DocumentIteratorExample
 
     #Region "#parentvisitorclass"
     Public MustInherit Class ParentVisitor
-        Implements IDocumentVisitor
+        Inherits DocumentVisitorBase
         Private _Fonts As List(Of String)
         Protected Property Fonts() As List(Of String)
             Get
@@ -62,46 +62,6 @@ Namespace DocumentIteratorExample
         End Property
         Protected Sub New()
             _Fonts = New List(Of String)()
-        End Sub
-        Public Overridable Sub Visit(ByVal bookmarkStart As DocumentBookmarkStart) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal bookmarkEnd As DocumentBookmarkEnd) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal commentStart As DocumentCommentStart) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal commentEnd As DocumentCommentEnd) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal fieldCodeStart As DocumentFieldCodeStart) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal fieldCodeEnd As DocumentFieldCodeEnd) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal fieldResultEnd As DocumentFieldResultEnd) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal hyperlinkStart As DocumentHyperlinkStart) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal hyperlinkEnd As DocumentHyperlinkEnd) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal inlinePicture As DocumentInlinePicture) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal paragraphEnd As DocumentParagraphEnd) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal paragraphStart As DocumentParagraphStart) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal picture As DocumentPicture) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal rangePermissionStart As DocumentRangePermissionStart) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal rangePermissionEnd As DocumentRangePermissionEnd) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal sectionStart As DocumentSectionStart) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal sectionEnd As DocumentSectionEnd) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal cellBorder As DocumentTableCellBorder) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal textBox As DocumentTextBox) Implements IDocumentVisitor.Visit
-        End Sub
-        Public Overridable Sub Visit(ByVal text As DocumentText) Implements IDocumentVisitor.Visit
         End Sub
     End Class
     #End Region ' #parentvisitorclass
