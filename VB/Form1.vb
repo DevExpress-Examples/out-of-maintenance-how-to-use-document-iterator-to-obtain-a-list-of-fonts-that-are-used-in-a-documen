@@ -32,37 +32,25 @@ Namespace DocumentIteratorExample
     End Class
     #Region "#myvisitorclass"
     Public Class MyVisitor
-        Inherits ParentVisitor
+        Inherits DocumentVisitorBase
+
+        Private _Fonts As List(Of String)
 
         Public ReadOnly Property DocumentFonts() As List(Of String)
             Get
-                Return Fonts
+                Return _Fonts
             End Get
         End Property
 
+        Public Sub New()
+            _Fonts = New List(Of String)()
+        End Sub
+
         Public Overrides Sub Visit(ByVal text As DocumentText)
-            If Not Fonts.Contains(text.TextProperties.FontName) Then
-                Fonts.Add(text.TextProperties.FontName)
+            If Not _Fonts.Contains(text.TextProperties.FontName) Then
+                _Fonts.Add(text.TextProperties.FontName)
             End If
         End Sub
     End Class
     #End Region ' #myvisitorclass
-
-    #Region "#parentvisitorclass"
-    Public MustInherit Class ParentVisitor
-        Inherits DocumentVisitorBase
-        Private _Fonts As List(Of String)
-        Protected Property Fonts() As List(Of String)
-            Get
-                Return _Fonts
-            End Get
-            Set(ByVal value As List(Of String))
-                _Fonts = value
-            End Set
-        End Property
-        Protected Sub New()
-            _Fonts = New List(Of String)()
-        End Sub
-    End Class
-    #End Region ' #parentvisitorclass
 End Namespace

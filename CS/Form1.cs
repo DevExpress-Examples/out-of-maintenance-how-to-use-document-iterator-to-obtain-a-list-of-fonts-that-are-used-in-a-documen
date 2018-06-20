@@ -32,25 +32,19 @@ namespace DocumentIteratorExample
         }
     }
     #region #myvisitorclass
-    public class MyVisitor : ParentVisitor
-    {
-        public List<string> DocumentFonts {get {return Fonts;}}
-        public override void Visit(DocumentText text) {
-            if (!Fonts.Contains(text.TextProperties.FontName))
-                Fonts.Add(text.TextProperties.FontName);
-        }
-    }
-    #endregion #myvisitorclass
-
-    #region #parentvisitorclass
-    public abstract class ParentVisitor : DocumentVisitorBase
+    public class MyVisitor : DocumentVisitorBase
     {
         private List<string> fonts;
-        protected List<string> Fonts { get { return fonts; } set { fonts = value; } }
-        protected ParentVisitor()
+        public List<string> DocumentFonts {get {return fonts;}}
+        public MyVisitor()
         {
             fonts = new List<string>();
         }
+
+        public override void Visit(DocumentText text) {
+            if (!fonts.Contains(text.TextProperties.FontName))
+                fonts.Add(text.TextProperties.FontName);
+        }
     }
-    #endregion #parentvisitorclass
+    #endregion #myvisitorclass
 }
