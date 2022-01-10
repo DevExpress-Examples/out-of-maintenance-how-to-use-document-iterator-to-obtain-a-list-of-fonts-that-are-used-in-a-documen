@@ -45,6 +45,11 @@ namespace DocumentIteratorExample
             if (!fonts.Contains(text.TextProperties.FontName))
                 fonts.Add(text.TextProperties.FontName);
         }
+        public override void Visit(DocumentParagraphEnd paragraphEnd)
+        {
+            if (!fonts.Contains(paragraphEnd.TextProperties.FontName))
+                fonts.Add(paragraphEnd.TextProperties.FontName);
+        }
     }
     #endregion #myvisitorclass
 }

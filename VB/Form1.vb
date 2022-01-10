@@ -51,6 +51,11 @@ Namespace DocumentIteratorExample
                 _Fonts.Add(text.TextProperties.FontName)
             End If
         End Sub
+        Public Overrides Sub Visit(ByVal paragraphEnd As DocumentParagraphEnd)
+            If (Not _Fonts.Contains(paragraphEnd.TextProperties.FontName)) Then
+                _Fonts.Add(paragraphEnd.TextProperties.FontName)
+            End If
+        End Sub
     End Class
     #End Region ' #myvisitorclass
 End Namespace
